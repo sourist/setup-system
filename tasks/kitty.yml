@@ -1,0 +1,20 @@
+---
+- name: Install Kitty terminal
+  package:
+    name: kitty
+    state: present
+
+- name: Ensure ~/.config/kitty exists
+  become: false
+  file:
+    path: "~/.config/kitty"
+    state: directory
+    mode: "0755"
+
+- name: Symlink Kitty config
+  become: false
+  file:
+    src: "{{ playbook_dir }}/configs/kitty"
+    dest: "~/.config/kitty"
+    state: link
+    force: yes

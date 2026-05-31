@@ -1,0 +1,8 @@
+---
+- name: Install system resource monitors
+  package:
+    name:
+      - htop
+      - nvtop
+      - ncdu
+    state: present

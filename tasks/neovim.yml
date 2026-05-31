@@ -1,0 +1,20 @@
+---
+- name: Install Neovim
+  package:
+    name: neovim
+    state: present
+
+- name: Ensure .config dir exists
+  become: false
+  file:
+    path: "~/.config"
+    state: directory
+    mode: "0755"
+
+- name: Symlink Neovim config
+  become: false
+  file:
+    src: "{{ playbook_dir }}/configs/nvim"
+    dest: "~/.config/nvim"
+    state: link
+    force: yes

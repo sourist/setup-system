@@ -1,0 +1,6 @@
+require("config.core")
+require("config.lazy")
+require("config.lsp")
+require("config.cmp")
+require("config.treesitter")
+require("config.molten")

@@ -1,0 +1,12 @@
+---
+- name: Install WireGuard package
+  apt:
+    name: wireguard
+    state: present
+    update_cache: yes
+
+- name: Ensure WireGuard config directory exists
+  file:
+    path: /etc/wireguard
+    state: directory
+    mode: "0700"

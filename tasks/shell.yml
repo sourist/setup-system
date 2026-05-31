@@ -1,0 +1,8 @@
+---
+- name: Add custom aliases to .bashrc
+  become: false
+  blockinfile:
+    path: "~/.bashrc"
+    block: |
+      alias take="xclip -selection clipboard <"
+      alias c="clear"

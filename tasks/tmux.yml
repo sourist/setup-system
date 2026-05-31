@@ -1,0 +1,20 @@
+---
+- name: Install tmux
+  package:
+    name: tmux
+    state: present
+
+- name: Ensure ~/.config/tmux exists
+  become: false
+  file:
+    path: "~/.config/tmux"
+    state: directory
+    mode: "0755"
+
+- name: Symlink tmux config
+  become: false
+  file:
+    src: "{{ playbook_dir }}/configs/tmux"
+    dest: "~/.config/tmux"
+    state: link
+    force: yes

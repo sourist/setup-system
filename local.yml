@@ -1,0 +1,27 @@
+---
+- name: Setup local system
+  hosts: localhost
+  connection: local
+  become: true 
+
+  tasks:
+    # Universal tasks
+    - name: Run universal tasks
+      block:
+        - import_tasks: tasks/font.yml
+        - import_tasks: tasks/kitty.yml
+        - import_tasks: tasks/miniconda.yml
+        - import_tasks: tasks/monitors.yml
+        - import_tasks: tasks/neovim.yml
+        - import_tasks: tasks/shell.yml
+        - import_tasks: tasks/tmux.yml
+        - import_tasks: tasks/utils.yml
+
+    # Debian
+    - name: Run Debian tasks
+      block:
+        - import_tasks: tasks/debian/docker.yml
+        - import_tasks: tasks/debian/postgresql.yml
+        - import_tasks: tasks/debian/sqlite.yml
+        - import_tasks: tasks/debian/wireguard.yml
+      when: ansible_os_family == "Debian"

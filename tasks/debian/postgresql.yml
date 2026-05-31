@@ -1,0 +1,14 @@
+---
+- name: Install PostgreSQL
+  apt:
+    name:
+      - postgresql
+      - postgresql-contrib
+    state: present
+    update_cache: yes
+
+- name: Enable and start PostgreSQL service
+  systemd:
+    name: postgresql
+    state: started
+    enabled: yes

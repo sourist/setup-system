@@ -1,0 +1,11 @@
+---
+- name: Install CLI utilities
+  package:
+    name:
+      - tree
+      - curl
+      - xclip
+      - wget
+      - git
+      - jq
+    state: present

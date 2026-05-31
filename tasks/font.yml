@@ -1,0 +1,28 @@
+---
+- name: Install font dependencies
+  become: true
+  package:
+    name:
+      - unzip
+      - fontconfig
+    state: present
+
+- name: Ensure local fonts dir exists
+  become: false
+  file:
+    path: "~/.local/share/fonts"
+    state: directory
+    mode: "0755"
+
+- name: Download and extract Hurmit Nerd Font
+  become: false
+  unarchive:
+    src: "https://github.com/ryanoasis/nerd-fonts/releases/latest/download/Hermit.zip"
+    dest: "~/.local/share/fonts"
+    remote_src: yes
+    creates: "~/.local/share/fonts/HurmitNerdFont-Regular.otf"
+
+- name: update font cache
+  become: false
+  command: fc-cache -f
+  changed_when: false
