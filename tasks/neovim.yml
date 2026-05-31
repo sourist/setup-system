@@ -1,8 +1,18 @@
 ---
 - name: Install Neovim
-  package:
-    name: neovim
-    state: present
+  become: true
+  unarchive:
+    src: "https://github.com/neovim/neovim/releases/latest/download/nvim-linux-x86_64.tar.gz"
+    dest: "/opt/"
+    remote_src: yes
+    creates: "/opt/nvim-linux-x86_64/bin/nvim"
+
+- name: Create symlink to nvim binary
+  become: true
+  file:
+    src: "/opt/nvim-linux-x86_64/bin/nvim"
+    dest: "/usr/local/bin/nvim"
+    state: link
 
 - name: Ensure .config dir exists
   become: false
