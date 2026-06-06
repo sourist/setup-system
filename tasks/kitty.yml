@@ -4,10 +4,10 @@
     name: kitty
     state: present
 
-- name: Ensure ~/.config/kitty exists
+- name: Ensure ~/.config exists
   become: false
   file:
-    path: "~/.config/kitty"
+    path: "~/.config"
     state: directory
     mode: "0755"
 

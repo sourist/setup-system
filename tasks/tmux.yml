@@ -4,10 +4,10 @@
     name: tmux
     state: present
 
-- name: Ensure ~/.config/tmux exists
+- name: Ensure ~/.config exists
   become: false
   file:
-    path: "~/.config/tmux"
+    path: "~/.config"
     state: directory
     mode: "0755"
 
