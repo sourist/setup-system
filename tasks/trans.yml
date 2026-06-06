@@ -1,0 +1,22 @@
+---
+- name: Install Translate Shell
+  become: true
+  apt:
+    name: translate-shell
+    state: present
+    update_cache: yes
+
+- name: Ensure translate-shell config dir exists
+  become: false
+  file:
+    path: "~/.config/translate-shell"
+    state: directory
+    mode: "0755"
+
+- name: Symlink translate-shell config
+  become: false
+  file:
+    src: "{{ playbook_dir }}/configs/translate-shell/init.trans"
+    dest: "~/.config/translate-shell/init.trans"
+    state: link
+    force: yes

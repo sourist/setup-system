@@ -15,6 +15,7 @@
         - import_tasks: tasks/neovim.yml
         - import_tasks: tasks/shell.yml
         - import_tasks: tasks/tmux.yml
+        - import_tasks: tasks/trans.yml
         - import_tasks: tasks/utils.yml
 
     # Debian

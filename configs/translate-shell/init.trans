@@ -1,0 +1,12 @@
+{
+    :verbose true
+    :hl "ru"
+    :tl "en"
+    :show-original true
+    :engine "google"
+    :user-agent "Mozilla/5.0 (X11; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/115.0"
+    :indent 4
+    :show-languages false
+    :show-original-phonetics false
+    :show-translation-phonetics false
+}
