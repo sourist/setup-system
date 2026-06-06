@@ -1,0 +1,7 @@
+---
+- name: Install Terminal Typing Test
+  become: true
+  get_url:
+    url: "https://github.com/lemnos/tt/releases/latest/download/tt-linux-amd64"
+    dest: "/usr/local/bin/tt"
+    mode: "0755"
