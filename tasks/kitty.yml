@@ -1,8 +1,56 @@
 ---
-- name: Install Kitty terminal
-  package:
-    name: kitty
-    state: present
+- name: Install Kitty
+  become: false
+  shell: curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin
+  args:
+    creates: "~/.local/kitty.app/bin/kitty"
+
+- name: Ensure ~/.local/bin exists
+  become: false
+  file:
+    path: "~/.local/bin"
+    state: directory
+    mode: "0755"
+
+- name: Symlink kitty binary
+  become: false
+  file:
+    src: "~/.local/kitty.app/bin/kitty"
+    dest: "~/.local/bin/kitty"
+    state: link
+    force: yes
+
+- name: Symlink kitten binary
+  become: false
+  file:
+    src: "~/.local/kitty.app/bin/kitten"
+    dest: "~/.local/bin/kitten"
+    state: link
+    force: yes
+
+- name: Symlink kitty desktop file
+  become: false
+  file:
+    src: "~/.local/kitty.app/share/applications/kitty.desktop"
+    dest: "~/.local/share/applications/kitty.desktop"
+    state: link
+    force: yes
+
+- name: Symlink kitty-open desktop file
+  become: false
+  file:
+    src: "~/.local/kitty.app/share/applications/kitty-open.desktop"
+    dest: "~/.local/share/applications/kitty-open.desktop"
+    state: link
+    force: yes
+
+- name: Set Kitty as default terminal
+  become: true
+  alternatives:
+    name: x-terminal-emulator
+    path: "{{ lookup('env', 'HOME') }}/.local/kitty.app/bin/kitty"
+    link: /usr/bin/x-terminal-emulator
+    priority: 100
 
 - name: Ensure ~/.config exists
   become: false
