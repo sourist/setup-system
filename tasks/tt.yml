@@ -2,6 +2,13 @@
 - name: Install Terminal Typing Test
   become: true
   get_url:
-    url: "https://github.com/lemnos/tt/releases/latest/download/tt-linux-amd64"
+    url: "https://github.com/lemnos/tt/releases/download/v0.4.2/tt-linux"
     dest: "/usr/local/bin/tt"
     mode: "0755"
+
+- name: Install tt man page
+  become: true
+  get_url:
+    url: "https://github.com/lemnos/tt/releases/download/v0.4.2/tt.1.gz"
+    dest: "/usr/share/man/man1/tt.1.gz"
+    mode: "0644"
