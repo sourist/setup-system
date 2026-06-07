@@ -1,4 +1,14 @@
 ---
+- name: Install Neovim dependencies
+  become: true
+  package:
+    name:
+      - luarocks
+      - libmagickwand-dev
+      - liblua5.1-0-dev
+      - build-essential
+    state: present
+
 - name: Install Neovim
   become: true
   unarchive:
