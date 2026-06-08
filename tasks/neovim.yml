@@ -24,6 +24,18 @@
     dest: "/usr/local/bin/nvim"
     state: link
 
+- name: Install cargo-binstall
+  become: false
+  command: cargo install cargo-binstall
+  args:
+    creates: "~/.cargo/bin/cargo-binstall"
+
+- name: Install tree-sitter-cli
+  become: false
+  command: cargo binstall -y tree-sitter-cli
+  args:
+    creates: "~/.cargo/bin/tree-sitter"
+
 - name: Ensure .config dir exists
   become: false
   file:
