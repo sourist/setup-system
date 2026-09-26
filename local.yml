@@ -10,6 +10,7 @@
       block:
         - import_tasks: tasks/font.yml
         - import_tasks: tasks/kitty.yml
+        - import_tasks: tasks/jupyter.yml
         - import_tasks: tasks/miniconda.yml
         - import_tasks: tasks/monitors.yml
         - import_tasks: tasks/neovim.yml

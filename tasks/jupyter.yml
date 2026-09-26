@@ -1,0 +1,31 @@
+---
+- name: Ensure .config/jupyter dir exists
+  become: false
+  file:
+    path: "~/.config/jupyter"
+    state: directory
+    mode: "0755"
+
+- name: Symlink Jupyter blank notebook
+  become: false
+  file:
+    src: "{{ playbook_dir }}/configs/jupyter/blank.ipynb"
+    dest: "~/.config/jupyter/blank.ipynb"
+    state: link
+    force: yes
+
+- name: Ensure .local/bin dir exists
+  become: false
+  file:
+    path: "~/.local/bin"
+    state: directory
+    mode: "0755"
+
+- name: Create notebook script
+  become: false
+  copy:
+    dest: "~/.local/bin/notebook"
+    content: |
+      #!/bin/bash
+      cp ~/.config/jupyter/blank.ipynb "$1"
+    mode: "0755"
