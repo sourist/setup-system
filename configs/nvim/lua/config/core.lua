@@ -17,7 +17,7 @@ vim.opt.langmap = 'ФИСВУАПРШОЛДЬТЩЗЙКЫЕГМЦЧНЯЁ;ABCDEF
 vim.keymap.set('n', 'Ж', ':', { noremap = true })
 
 
--- Disable default tree
+-- Disable default tree --
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 
