@@ -33,6 +33,12 @@
   args:
     creates: "~/.cargo/bin/tree-sitter"
 
+- name: Install ripgrep (Telescope)
+  become: false
+  command: ~/.cargo/bin/cargo binstall -y ripgrep
+  args:
+    creates: "~/.cargo/bin/rg"
+
 - name: Ensure .config dir exists
   become: false
   file:
