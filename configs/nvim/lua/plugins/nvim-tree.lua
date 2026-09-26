@@ -10,7 +10,6 @@ return {
             sort_by = "case_sensitive",
             view = {
                 width = 30,
-                -- relativenumber = true, -- если любишь относительные номера строк
             },
             renderer = {
                 group_empty = true,
@@ -23,7 +22,7 @@ return {
                 },
             },
             filters = {
-                dotfiles = false, -- показывать или скрывать скрытые файлы
+                dotfiles = false,
             },
         })
 
