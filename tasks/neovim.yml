@@ -3,9 +3,6 @@
   become: true
   package:
     name:
-      - luarocks
-      - libmagickwand-dev
-      - liblua5.1-0-dev
       - build-essential
     state: present
 
