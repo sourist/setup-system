@@ -6,6 +6,7 @@ return {
             ensure_installed = {
                 "jupytext",
                 "basedpyright",
+                "debugpy",
             },
             run_on_start = true,
         })
