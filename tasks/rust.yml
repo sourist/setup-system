@@ -1,0 +1,11 @@
+---
+- name: Check if Cargo is installed
+  become: false
+  stat:
+    path: "~/.cargo/bin/cargo"
+  register: cargo_stat
+
+- name: Install Rust and Cargo via rustup
+  become: false
+  shell: "curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y"
+  when: not cargo_stat.stat.exists
